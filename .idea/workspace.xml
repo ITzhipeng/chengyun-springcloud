@@ -202,7 +202,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583473757004" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583474027270" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -346,7 +346,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582876939613</updated>
       <workItem from="1582876945860" duration="692000" />
-      <workItem from="1582877664994" duration="33768000" />
+      <workItem from="1582877664994" duration="34012000" />
     </task>
     <task id="LOCAL-00001" summary="微服务">
       <created>1583465483707</created>
@@ -355,14 +355,22 @@
       <option name="project" value="LOCAL" />
       <updated>1583465483707</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="微服务">
+      <created>1583473931672</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583473931673</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34460000" />
+    <option name="totallyTimeSpent" value="34704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18896447" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
