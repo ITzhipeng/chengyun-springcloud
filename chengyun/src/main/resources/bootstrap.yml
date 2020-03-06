@@ -1,0 +1,7 @@
+spring:
+  application:
+    name : chengyun
+  cloud:
+    config:
+      uri : http://127.0.0.1:6002/
+      profile : release

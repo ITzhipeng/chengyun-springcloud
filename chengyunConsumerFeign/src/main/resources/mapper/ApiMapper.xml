@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengyun.chengyun.mapper.ApiMapper">
+    <select id="getVehicle" resultType="com.chengyun.chengyun.domain.WhclJbxx">
+        select id
+                ,plateNumber
+                ,cargoType
+                ,driverName
+                ,supercargoName
+                ,shipperAddress
+                ,deliverAddress
+                ,vehicleType
+                ,ratedTonnage
+                ,ownedName
+                ,businessScope
+                ,businessLicense
+        from cy_whcljb_data order by rksj
+    </select>
+    <select id="getEnterprise" resultType="com.chengyun.chengyun.domain.QyJcxx">
+        select
+              id,
+              entName,
+              entCatogory,
+              entCode,
+              licenseNumber,
+              expDate,
+              registerAddress,
+              productionSite,
+              legalRepresentative,
+              district,
+              street,
+              businessScope
+   from cy_qyjc_data order by rksj;
+    </select>
+
+    <select id="getEnterprisePlan" resultType="com.chengyun.chengyun.domain.Whpqyya">
+       SELECT
+id,
+entName,
+planSummary,
+planDetail,
+planCategory,
+contact,
+phone
+FROM cy_whpqyya_data order by rksj;
+    </select>
+
+    <select id="getInternetnews" resultType="com.chengyun.chengyun.domain.Wlyqrd">
+       select
+   id_yq,
+   jhpt_update_time,
+   rank_yq,
+   title_yq,
+   time_yq,
+   heat_yq,
+   vol_24h_yq
+from ods_dh_wxb_wlyqrd_di;
+    </select>
+
+    <select id="getAtmosphereAQI" resultType="com.chengyun.chengyun.domain.Kqzlzs">
+       SELECT
+aqivalue,
+groupid,
+aqiitemid,
+grade,
+jhpt_update_time,
+aqiitemname,
+aqi,
+lst_aqi,
+lst,
+groupname,
+quality
+FROM `ods_dh_sthjj_tb_kqzlzsaqi_di`;
+    </select>
+
+    <select id="getAtmosphereTedDaysforcast" resultType="com.chengyun.chengyun.domain.Qxstyb">
+       SELECT
+ybrq,
+bttqqk,
+ywtqqk,
+zdqw,
+zgqw,
+fx,
+fl,
+jsgl
+FROM `ods_cy_qxj_smc_yubao10_di`;
+    </select>
+
+    <select id="getAtmosphereWarning" resultType="com.chengyun.chengyun.domain.Qxyj">
+      SELECT
+qm,
+fbsj,
+yjlx,
+yjjb,
+yjzt,
+yjxhnr
+FROM `ods_cy_qxj_fwzx_yjxh_di`;
+    </select>
+
+
+
+
+</mapper>

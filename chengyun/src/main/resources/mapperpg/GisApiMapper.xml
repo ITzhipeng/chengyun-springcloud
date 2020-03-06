@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chengyun.chengyun.mapperpg.GisApiMapper">
+
+    <select id="getPublicOpinion" resultType="com.chengyun.chengyun.domain.Jqjc">
+        select
+        id,
+        time,
+        address,
+        longitude,
+        latitude,
+        detail
+        from cy_jqjc_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin}
+    </select>
+
+    <select id="getVehicleCoordinates" resultType="com.chengyun.chengyun.domain.Cldwjgj">
+       select
+        id,
+        longitude,
+        latitude,
+        time
+        from cy_cldwjgj_data
+        where
+		type=#{type}
+        and longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin}
+    </select>
+
+    <select id="getFirestation" resultType="com.chengyun.chengyun.domain.Xfd">
+      select
+        id,
+		name,
+		address,
+        longitude,
+        latitude,
+        phone
+        from cy_xfll_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin}
+    </select>
+
+    <select id="getEmergencyteam" resultType="com.chengyun.chengyun.domain.Shyjjy">
+      select
+        id,
+		name,
+		address,
+        longitude,
+        latitude,
+        phone,
+        organization
+        from cy_shyjjy_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin} order by rksj
+    </select>
+
+    <select id="getRescueteam" resultType="com.chengyun.chengyun.domain.Hgjy">
+      select
+        id,
+		name,
+		address,
+        longitude,
+        latitude,
+        phone
+        from cy_hgjy_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin} order by rksj
+    </select>
+
+    <select id="getHospital" resultType="com.chengyun.chengyun.domain.Hospital">
+      select
+        id,
+		name,
+		address,
+        longitude,
+        latitude,
+        phone,
+        level
+        from cy_yy_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin} order by rksj
+    </select>
+
+    <select id="getPolicestation" resultType="com.chengyun.chengyun.domain.Pcs">
+      select
+        id,
+		name,
+		address,
+        longitude,
+        latitude,
+        phone
+        from cy_pcs_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin}
+    </select>
+
+    <select id="getAtmosphere" parameterType="java.lang.Double" resultType="com.chengyun.chengyun.domain.Forcast">
+        SELECT distinct cpms,ybqsdnyrs,zzs,yjjb,yjzt,yjxhnr,hbgd,sxgs,ybcpgs,ybsk,wd,xdsd,fx,fs,jsl,zyl,jsxt,tqxx,njd,rksj,dt from
+(select round(min(CAST(ST_Distance(
+	ST_SetSRID(ST_MakePoint(#{longitude},#{latitude}),4326)::geography,
+	ST_SetSRID(ST_MakePoint(CAST(yjzt as double precision),CAST(yjxhnr as double precision)),4326)::geography) as NUMERIC)),3)
+as distance
+ from ods_cy_qxj_fwzx_grid_di)t1
+LEFT JOIN
+(select cpms,ybqsdnyrs,zzs,yjjb,yjzt,yjxhnr,hbgd,sxgs,ybcpgs,ybsk,wd,xdsd,fx,fs,jsl,zyl,jsxt,tqxx,njd,rksj,dt,
+round(CAST(ST_Distance(
+	ST_SetSRID(ST_MakePoint(#{longitude},#{latitude}),4326)::geography,
+	ST_SetSRID(ST_MakePoint(CAST(yjzt as double precision),CAST(yjxhnr as double precision)),4326)::geography) as NUMERIC),3)
+as distance
+ from ods_cy_qxj_fwzx_grid_di)t2
+on t1.distance = t2.distance order by rksj desc limit 1
+    </select>
+
+    <select id="getHazardousource" resultType="com.chengyun.chengyun.domain.Zdwxysj">
+      SELECT
+id,
+code,
+address,
+type,
+level,
+majorJob,
+specialist,
+responsibility
+FROM cy_zdwxysj_data
+        where
+        longitude &lt;= #{lonMax}
+        and longitude &gt;= #{lonMin}
+        and latitude &lt; #{latMax}
+        and latitude &gt;=#{latMin}
+    </select>
+</mapper>

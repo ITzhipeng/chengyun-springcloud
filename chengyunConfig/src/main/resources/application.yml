@@ -1,0 +1,27 @@
+
+server:
+  port: 6002
+spring:
+  application:
+    name: chengyunConfig
+  profiles:
+    active: subversion
+  cloud:
+    config:
+      server:
+        svn:
+          uri: https://surface/svn/svn_rep/config
+          username: root
+          password: 1234
+          default-label:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:5000/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
+
